@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Select and Print</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 20px;
+                font-family: Arial, sans-serif;
+                background: url("{{ url_for("static", filename="pictures/background.jpg") }}")
+                    no-repeat center center fixed;
+                background-size: cover;
+            }
+            h1 {
+                text-align: center;
+                color: black; /* Change text color to contrast with the background */
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                background: rgba(
+                    255,
+                    255,
+                    255,
+                    0.8
+                ); /* Semi-transparent background for readability */
+                padding: 20px;
+                border-radius: 10px;
+            }
+            ol li {
+                margin-bottom: 10px;
+            }
+            ol li img {
+                display: block;
+                margin-top: 5px;
+                max-width: 100%;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>ATA Settlement Creation</h1>
+            <ol>
+                <li>
+                    Login into
+                    <a href="https://app.alaskatraveladventures.com"
+                        >ATA webiste</a
+                    >
+                </li>
+                <li>Click on Food tab</li>
+                <li>Click on Camp Ops</li>
+                <li>Instead of downloading PDF download CSV</li>
+                <li>Click Choose File on this website</li>
+                <li>Click on the CSV you downloaded from the ATA website</li>
+                <li>Click on Upload</li>
+                <li>Open the zip folder that was downloaded</li>
+                <li>Done</li>
+            </ol>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+    </body>
+</html>
