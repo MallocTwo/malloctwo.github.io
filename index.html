@@ -1,54 +1,36 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Select and Print</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 20px;
-                font-family: Arial, sans-serif;
-            }
-            h1 {
-                text-align: center;
-                color: black; /* Change text color to contrast with the background */
-            }
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-                background: rgba(
-                    255,
-                    255,
-                    255,
-                    0.8
-                ); /* Semi-transparent background for readability */
-                padding: 20px;
-                border-radius: 10px;
-            }
-            ol li {
-                margin-bottom: 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>ATA Settlement Creation</h1>
-            <ol>
-                <li>
-                    Login into ATA webiste
-                </li>
-                <li>Click on Food tab</li>
-                <li>Click on Camp Ops</li>
-                <li>Instead of downloading PDF download CSV</li>
-                <li>Click Choose File on this website</li>
-                <li>Click on the CSV you downloaded from the ATA website</li>
-                <li>Click on Upload</li>
-                <li>Open the zip folder that was downloaded</li>
-                <li>Done</li>
-            </ol>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" />
-                <input type="submit" value="Upload" />
-            </form>
-        </div>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Numbers</title>
+    <script>
+        function sortNumbers() {
+            // Get input value and split into array
+            var input = document.getElementById('numbersInput').value;
+            var numbers = input.split(',');
+
+            // Convert string numbers to integers
+            numbers = numbers.map(function(num) {
+                return parseInt(num.trim(), 10);
+            });
+
+            // Sort numbers in ascending order
+            numbers.sort(function(a, b) {
+                return a - b;
+            });
+
+            // Display sorted numbers
+            document.getElementById('sortedNumbers').textContent = numbers.join(', ');
+        }
+    </script>
+</head>
+<body>
+    <h2>Sort Numbers</h2>
+    <p>Enter numbers separated by commas:</p>
+    <input type="text" id="numbersInput" placeholder="e.g., 5, 2, 8, 1">
+    <button onclick="sortNumbers()">Sort</button>
+    <p>Sorted Numbers:</p>
+    <p id="sortedNumbers"></p>
+</body>
 </html>
